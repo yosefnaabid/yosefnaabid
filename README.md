@@ -4,47 +4,25 @@
 
 > I break what I run before I trust it.
 
-Sole sysadmin for a 24/7 hosting production. Everything I manage lives in Git,
-gets monitored, and has to prove it can be restored.
+I am the only sysadmin behind a hosting production that runs 24/7. Everything I manage lives in Git and gets monitored. If I have never restored it, I assume the backup does not exist.
 
 ## What I run
 
-- **20+ containerized services** on one host, each with CPU/memory limits and
-  auto-restart, so a runaway service can't drag down the rest (Docker, Nginx).
-- **Admin plane off the internet**: access only through a WireGuard tunnel
-  terminated at the router, intrusion attempts blocked automatically
-  (MikroTik RouterOS, CrowdSec, nftables).
-- **10-minute RTO** for the production database, verified by a monthly restore
-  drill in an isolated environment (PostgreSQL).
-- **Failures detected in under a minute**, services recover without human
-  intervention (Prometheus, Alertmanager, systemd).
-- **Full stack rebuildable from scratch in ~15 minutes** — which is how it
-  moved to a new dedicated server without clients noticing (Ansible, Bash, Git).
+* More than 20 containerized services on one host, each with its own CPU and memory limits and automatic restarts, so one runaway service cannot drag down the rest (Docker, Nginx).
+* Administration happens off the internet. The only way in is a WireGuard tunnel that ends at the router, and intrusion attempts get blocked without anyone touching a thing (MikroTik RouterOS, CrowdSec, nftables).
+* The production database has a recovery time of 10 minutes. I know because I restore it every month in an isolated environment, following a written procedure (PostgreSQL).
+* Failures raise an alert in under a minute and services recover on their own (Prometheus, Alertmanager, systemd).
+* The whole stack rebuilds from scratch in about 15 minutes with Ansible, Bash and Git. That is how it moved to a new dedicated server without a single client noticing.
 
-Before that: systems and networks for a university dental-clinic group
-(90 sites across 27 countries) — 20 physical servers migrated to VMware and
-Proxmox HA clusters, GDPR-audited immutable backups, and Zabbix/Grafana
-monitoring for 10 clinics and 300 users.
+Before this I ran systems and networks for a university dental clinic group with 90 sites in 27 countries. I migrated 20 physical servers to 25 virtual machines across VMware and Proxmox clusters in high availability. The clinical data backups were immutable and restore tested, and they passed a GDPR audit. Monitoring ran on Zabbix and Grafana for 10 clinics and around 300 users.
 
-## Proof, not claims
+## Projects
 
-- **[network-segmentation-lab](https://github.com/yosefnaabid/network-segmentation-lab)** —
-  Firewall policy as code: a 6-VLAN network on Proxmox + OPNsense where the
-  rules are compiled from a single YAML policy, and a pytest suite in CI proves
-  inter-VLAN isolation still holds after every change. Terraform, Ansible,
-  chaos testing.
-- **[activedirectory-lab](https://github.com/yosefnaabid/activedirectory-lab)** —
-  Windows Server domain built and CIS-hardened entirely from PowerShell — DHCP,
-  GPOs, CSV-driven user lifecycle — plus a RHEL node joined to the domain
-  behind a Squid proxy. Pester tests and PSScriptAnalyzer in CI.
-- **[proxmox-backup-lab](https://github.com/yosefnaabid/proxmox-backup-lab)** —
-  Backup and disaster recovery on Proxmox VE, automated end to end with Ansible
-  and verified with real restores — an untested backup is a hope, not a backup.
-- **[zabbix-lab](https://github.com/yosefnaabid/zabbix-lab)** —
-  Zabbix 6 monitoring on Debian 12, provisioned by code: server, agent, hosts,
-  triggers and alerting registered through the API.
-- **[yosefnaabid.com](https://yosefnaabid.com)** — my site and CV, self-hosted
-  on Azure.
+* **[network-segmentation-lab](https://github.com/yosefnaabid/network-segmentation-lab)** is a network of six VLANs on Proxmox and OPNsense where the firewall rules are compiled from one YAML policy file. A pytest suite runs in CI and proves that traffic between VLANs stays blocked after every change. Terraform and Ansible handle provisioning, with some chaos testing on top.
+* **[activedirectory-lab](https://github.com/yosefnaabid/activedirectory-lab)** is a Windows Server domain built from PowerShell alone and hardened with the CIS Benchmark. It covers DHCP, GPOs, user lifecycle fed from CSV files, and a RHEL node joined to the domain behind a Squid proxy. Pester tests and PSScriptAnalyzer run in CI.
+* **[proxmox-backup-lab](https://github.com/yosefnaabid/proxmox-backup-lab)** automates backup and disaster recovery on Proxmox VE with Ansible, end to end, and verifies it with real restores.
+* **[zabbix-lab](https://github.com/yosefnaabid/zabbix-lab)** builds Zabbix 6 monitoring on Debian 12 from code. Server, agent, hosts, triggers and alerting all get registered through the API.
+* **[yosefnaabid.com](https://yosefnaabid.com)** is my site and CV. I host it myself on Azure.
 
 ## Stack
 
@@ -85,15 +63,14 @@ monitoring for 10 clinics and 300 users.
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 ![Veeam](https://img.shields.io/badge/Veeam-00B336)
 
-**Also:** Hyper-V · Sophos XGS · SELinux · Alertmanager · Active Directory (GPO, LDAP) · Entra ID · VLAN / DHCP / DNS · Git · pytest / Pester
+On top of those I also work with Hyper-V, Sophos XGS, SELinux, Alertmanager, Active Directory (GPO, LDAP), Entra ID, VLANs, DHCP, DNS, Git, pytest and Pester.
 
-**Certifications:** CCNA 200-301 · Azure AZ-104 · ITIL Foundation · Google Cybersecurity · CompTIA Security+ (in progress)
+I hold the CCNA 200-301, Azure AZ-104, ITIL Foundation and Google Cybersecurity certifications, and I am preparing CompTIA Security+.
 
-**Languages:** Spanish (native) · English (B2, Cambridge)
+Spanish is my first language. I work in English as well (B2, Cambridge certified).
 
 ## Contact
 
-Open to Linux systems administration roles — anywhere in Spain (on-site or
-remote) and remote international.
+Open to Linux systems administration roles anywhere in Spain, on site or remote, and to international remote work.
 
-📫 **yosefnaabid@gmail.com** · [LinkedIn](https://www.linkedin.com/in/yosefnaabid) · [yosefnaabid.com](https://yosefnaabid.com)
+Write to **yosefnaabid@gmail.com**, find me on [LinkedIn](https://www.linkedin.com/in/yosefnaabid), or read the CV at [yosefnaabid.com](https://yosefnaabid.com).
